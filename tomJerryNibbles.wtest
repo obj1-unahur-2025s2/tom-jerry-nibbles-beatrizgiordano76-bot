@@ -1,17 +1,64 @@
 import tomJerryNibbles.*
 
-describe "Grupo de test" {
+describe "Caso de Uso: Parte 1" {
 
-  test "test 1" {
-    assert.equals(100, 50+50)
-  }
-
-  test "test 3" {
-    assert.that(true)
-  }
-
-  test "test 4" {
-    assert.notThat(false)
-  }
-
+test "al inicio la velocidad máxima de Tom es 10 (su energía es 50)" {       
+  assert.equals(10, tom.velMaxima())
 }
+
+test "si come a Jerry, la velocidad máxima pasa a 15.2" {
+  tom.comer(jerry)
+  assert.equals(15.2, tom.velMaxima())
+}
+
+test "si corre 24 metros, la velocidad máxima pasa a 14" {
+  tom.comer(jerry)
+  tom.correr(24)
+  assert.equals(14, tom.velMaxima())
+}
+
+test "si come a Nibbles, pasa a tener 18.7" {
+  tom.comer(jerry)
+  tom.correr(24)
+  tom.comer(nibbles)
+  assert.equals(18.7, tom.velMaxima())
+}
+
+test "si Jerry cumple años y luego lo come, llega a 25.9" {  
+  tom.comer(jerry)
+  tom.correr(24)
+  tom.comer(nibbles) 
+  jerry.cumplirAnio()  
+  tom.comer(jerry)      
+  assert.equals(25.9, tom.velMaxima()) 
+ }
+
+  test "si corre 38 metros, velocidad 24" {
+    tom.comer(jerry)
+    tom.correr(24)
+    tom.comer(nibbles)
+    jerry.cumplirAnio()
+    tom.comer(jerry)
+    tom.correr(38)
+    assert.equals(24, tom.velMaxima())
+  }
+
+
+  test "puede cazar un ratón si tiene energía suficiente" {
+    assert.that(tom.puedeCazarADistancia(30))   // gasta 15, tiene 50
+    assert.notThat(tom.puedeCazarADistancia(200)) // gasta 100, no alcanza
+  }
+
+  test "cazar a Nibbles a distancia si puede" {
+    tom.cazarA_SiPuede(nibbles, 10)
+    assert.equals(5 + tom.energia / 10, tom.velMaxima())
+  }
+test "Speedy entrena y aumenta su velocidad" {
+    speedy.entrenar()
+    assert.equals(20, speedy.velocidad)
+}
+test " Verifico que el peso sigue siendo el mismo" {
+        assert.equals(25, speedy.peso())
+}
+     }
+      
