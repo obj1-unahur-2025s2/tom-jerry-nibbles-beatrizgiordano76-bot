@@ -55,7 +55,7 @@ test "si Jerry cumple años y luego lo come, llega a 25.9" {
   }
 test "Speedy entrena y aumenta su velocidad" {
     speedy.entrenar()
-    assert.equals(20, speedy.velocidad)
+    assert.equals(20, speedy.getVelocidad())
 }
 test " Verifico que el peso sigue siendo el mismo" {
         assert.equals(25, speedy.peso())

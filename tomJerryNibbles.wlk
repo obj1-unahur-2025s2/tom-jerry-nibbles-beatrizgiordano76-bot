@@ -65,4 +65,5 @@ object speedy {
   method entrenar() {
     velocidad += 5
   }
+    method getVelocidad() = velocidad   // 👈 getter para acceder
 }
